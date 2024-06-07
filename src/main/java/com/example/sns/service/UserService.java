@@ -17,7 +17,9 @@ public class UserService {
 
     public User join(String userName, String password) {
         // username 중복 체크
-        Optional<UserEntity> userEntity = userEntityRepository.findByUserName(userName);
+        userEntityRepository.findByUserName(userName).ifPresent(it -> {
+            throw new SnsApplicationException();
+        });
 
         // user 등록
         userEntityRepository.save(new UserEntity());
