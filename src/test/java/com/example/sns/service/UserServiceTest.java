@@ -32,7 +32,7 @@ public class UserServiceTest {
 
         // mocking
         when(userEntityRepository.findByUserName(userName)).thenReturn(Optional.empty());
-        when(userEntityRepository.save(any())).thenReturn(Optional.of(UserEntityFixture.get(userName, password)));
+        when(userEntityRepository.save(any())).thenReturn(UserEntityFixture.get(userName, password));
 
         assertDoesNotThrow(() -> userService.join(userName, password));
     }

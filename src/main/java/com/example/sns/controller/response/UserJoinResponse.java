@@ -3,9 +3,10 @@ package com.example.sns.controller.response;
 import com.example.sns.model.User;
 import com.example.sns.model.UserRole;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-import java.util.Locale;
 
+@Getter
 @AllArgsConstructor
 public class UserJoinResponse {
 
