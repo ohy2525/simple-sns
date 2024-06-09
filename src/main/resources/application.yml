@@ -10,3 +10,8 @@ spring.datasource:
     maximum-pool-size: 4
   url: jdbc:postgresql://ep-cold-sun-a48asb0b.us-east-1.pg.koyeb.app/koyebdb?user=koyeb-adm&password=eQKsBh49EFJP
   dirver-class-name: org.postgresql
+
+jwt:
+  secret-key: sns-application-secret-key.12345678910.abcdefghijklmnopqrstuvwxyz
+  # 30 days
+  token.expired-time-ms: 2592000000
