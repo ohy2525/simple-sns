@@ -6,15 +6,15 @@ import com.example.sns.model.Entity.UserEntity;
 import com.example.sns.model.User;
 import com.example.sns.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserEntityRepository userEntityRepository;
+    private final BCryptPasswordEncoder encoder;
 
     public User join(String userName, String password) {
         // username 중복 체크
@@ -23,7 +23,7 @@ public class UserService {
         });
 
         // user 등록
-        UserEntity userEntity = userEntityRepository.save(UserEntity.of(userName, password));
+        UserEntity userEntity = userEntityRepository.save(UserEntity.of(userName, encoder.encode(password)));
         return User.fromEntity(userEntity);
     }
 
